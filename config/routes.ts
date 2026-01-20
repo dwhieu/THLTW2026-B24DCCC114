@@ -1,4 +1,6 @@
-﻿export default [
+﻿import { icons } from 'antd/lib/image/PreviewGroup';
+
+export default [
 	{
 		path: '/user',
 		layout: false,
@@ -41,6 +43,12 @@
 		name: 'TodoList',
 		icon: 'OrderedListOutlined',
 		component: './TodoList',
+	},
+	{
+		path: '/products',
+		name: 'QuanLySanPham',
+		icon: 'ShoppingOutlined',
+		component: './QuanLySanPham/ProductManagement',
 	},
 
 	// DANH MUC HE THONG

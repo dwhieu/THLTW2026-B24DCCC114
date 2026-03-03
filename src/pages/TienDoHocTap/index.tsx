@@ -36,7 +36,7 @@ type Subject = {
 type StudySession = {
 	id: string;
 	subjectId: string;
-	startTime: string; // ISO
+	startTime: string;
 	durationMinutes: number;
 	content: string;
 	notes?: string;
@@ -46,8 +46,8 @@ type StudySession = {
 
 type MonthlyGoal = {
 	id: string;
-	month: string; // YYYY-MM
-	subjectId: string | null; // null => tổng
+	month: string;
+	subjectId: string | null;
 	targetMinutes: number;
 	createdAt: string;
 	updatedAt?: string;
@@ -76,7 +76,6 @@ function safeJsonParse<T>(raw: string | null, fallback: T): T {
 }
 
 function newId(): string {
-	// crypto.randomUUID is supported in modern browsers
 	const anyCrypto = (globalThis as any).crypto;
 	if (anyCrypto?.randomUUID) return anyCrypto.randomUUID();
 	return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
@@ -139,7 +138,6 @@ const TienDoHocTap: React.FC = () => {
 		return map;
 	}, [sessionsInActiveMonth]);
 
-	// ===== Subjects: modal/form =====
 	const [subjectModalOpen, setSubjectModalOpen] = useState(false);
 	const [editingSubject, setEditingSubject] = useState<Subject | null>(null);
 	const [subjectForm] = Form.useForm<{ name: string }>();
@@ -199,7 +197,6 @@ const TienDoHocTap: React.FC = () => {
 		message.success('Đã xoá môn học (kèm lịch học/mục tiêu liên quan)');
 	};
 
-	// ===== Sessions: modal/form =====
 	const [sessionModalOpen, setSessionModalOpen] = useState(false);
 	const [editingSession, setEditingSession] = useState<StudySession | null>(null);
 	const [sessionForm] = Form.useForm<{
@@ -300,7 +297,6 @@ const TienDoHocTap: React.FC = () => {
 		message.success('Đã xoá lịch học');
 	};
 
-	// ===== Goals: modal/form =====
 	const [goalModalOpen, setGoalModalOpen] = useState(false);
 	const [editingGoal, setEditingGoal] = useState<MonthlyGoal | null>(null);
 	const [goalForm] = Form.useForm<{ month: Moment; subjectId: string | 'total'; targetMinutes: number }>();
@@ -707,7 +703,6 @@ const TienDoHocTap: React.FC = () => {
 				</Card>
 			</Col>
 
-			{/* Subject Modal */}
 			<Modal
 				title={editingSubject ? 'Sửa môn học' : 'Thêm môn học'}
 				visible={subjectModalOpen}
@@ -723,8 +718,6 @@ const TienDoHocTap: React.FC = () => {
 					</Form.Item>
 				</Form>
 			</Modal>
-
-			{/* Session Modal */}
 			<Modal
 				title={editingSession ? 'Sửa buổi học' : 'Thêm buổi học'}
 				visible={sessionModalOpen}
@@ -791,7 +784,6 @@ const TienDoHocTap: React.FC = () => {
 				</Form>
 			</Modal>
 
-			{/* Goal Modal */}
 			<Modal
 				title={editingGoal ? 'Sửa mục tiêu' : 'Thêm mục tiêu'}
 				visible={goalModalOpen}

@@ -14,7 +14,7 @@ const DoanSo: React.FC = () => {
 	const [finished, setFinished] = useState<boolean>(false);
 
 	const startGame = () => {
-		const random = Math.floor(Math.random() * 100) + 1; // 1..100
+		const random = Math.floor(Math.random() * 100) + 1;
 		setSecretNumber(random);
 		setAttemptsLeft(MAX_ATTEMPTS);
 		setCurrentGuess(null);

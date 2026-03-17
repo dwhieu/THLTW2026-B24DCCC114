@@ -69,7 +69,6 @@ const DeThiPage: React.FC = () => {
 		}, {});
 	}, [danhSachKhoi]);
 
-	// ===== Cấu trúc đề =====
 	const [visibleCauTruc, setVisibleCauTruc] = useState(false);
 	const [editingCauTruc, setEditingCauTruc] = useState<CauTrucDeThi | null>(null);
 	const [formCauTruc] = Form.useForm<CauTrucForm>();
@@ -140,7 +139,6 @@ const DeThiPage: React.FC = () => {
 		message.success('Tạo đề thi thành công');
 	};
 
-	// ===== Đề thi (lưu trữ + chỉnh sửa) =====
 	const [visibleDeThi, setVisibleDeThi] = useState(false);
 	const [editingDeThi, setEditingDeThi] = useState<DeThi | null>(null);
 	const [formDeThi] = Form.useForm<DeThiEditForm>();

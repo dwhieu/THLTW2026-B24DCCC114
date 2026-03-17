@@ -25,6 +25,30 @@
 		icon: 'HomeOutlined',
 	},
 	{
+		path: '/nhan-vien-dich-vu',
+		name: 'Nhân viên & Dịch vụ',
+		component: './DatLich/NhanVienDichVu',
+		icon: 'TeamOutlined',
+	},
+	{
+		path: '/lich-hen',
+		name: 'Lịch hẹn',
+		component: './DatLich/LichHen',
+		icon: 'CalendarOutlined',
+	},
+	{
+		path: '/danh-gia',
+		name: 'Đánh giá',
+		component: './DatLich/DanhGia',
+		icon: 'StarOutlined',
+	},
+	{
+		path: '/bao-cao',
+		name: 'Thống kê & báo cáo',
+		component: './DatLich/BaoCao',
+		icon: 'BarChartOutlined',
+	},
+	{
 		path: '/gioi-thieu',
 		name: 'About',
 		component: './TienIch/GioiThieu',

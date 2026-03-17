@@ -65,8 +65,11 @@ export default () => {
 		}
 	};
 
-	const updateSettingBaseModel = async (payload: { key: ESettingKey; value: any; noNotif?: boolean }, ip?: string) => {
-		if (formSubmiting) return Promise.reject('Form submiting');
+	const updateSettingBaseModel = async (
+		payload: { key: ESettingKey; value: any; noNotif?: boolean },
+		ip?: string,
+	): Promise<void> => {
+		if (formSubmiting) throw new Error('Form submiting');
 		setFormSubmiting(true);
 		try {
 			const _id = settings[payload.key]?._id;
@@ -81,7 +84,7 @@ export default () => {
 			});
 			if (!payload?.noNotif) message.success('Lưu thành công');
 		} catch (err) {
-			return Promise.reject(err);
+			throw err;
 		} finally {
 			setFormSubmiting(false);
 		}

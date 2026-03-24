@@ -42,7 +42,39 @@
 		icon: 'OrderedListOutlined',
 		component: './TodoList',
 	},
-
+	// Thêm vào config/routes.ts
+	{
+		path: '/quan-ly-van-bang',
+		name: 'Quản lý văn bằng',
+		icon: 'SafetyCertificateOutlined', // Cần import icon tương ứng nếu file routes yêu cầu
+		routes: [
+			{
+				path: '/quan-ly-van-bang/so-van-bang',
+				name: 'Sổ văn bằng',
+				component: './QuanLyVanBang/SoVanBang',
+			},
+			{
+				path: '/quan-ly-van-bang/quyet-dinh',
+				name: 'Quyết định tốt nghiệp',
+				component: './QuanLyVanBang/QuyetDinh',
+			},
+			{
+				path: '/quan-ly-van-bang/cau-hinh-bieu-mau',
+				name: 'Cấu hình biểu mẫu',
+				component: './QuanLyVanBang/CauHinhBieuMau',
+			},
+			{
+				path: '/quan-ly-van-bang/thong-tin',
+				name: 'Thông tin văn bằng',
+				component: './QuanLyVanBang/ThongTinVanBang',
+			},
+			{
+				path: '/quan-ly-van-bang/tra-cuu',
+				name: 'Tra cứu',
+				component: './QuanLyVanBang/TraCuu',
+			},
+		],
+	},
 	// DANH MUC HE THONG
 	// {
 	// 	name: 'DanhMuc',

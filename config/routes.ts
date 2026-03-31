@@ -42,6 +42,30 @@
 		icon: 'OrderedListOutlined',
 		component: './TodoList',
 	},
+	{
+		path: '/clb',
+		name: 'Câu lạc bộ',
+		icon: 'ApartmentOutlined',
+		component: './CLB/Clubs',
+	},
+	{
+		path: '/clb-applications',
+		name: 'Đơn đăng ký',
+		icon: 'FormOutlined',
+		component: './CLB/Applications',
+	},
+	{
+		path: '/clb-members',
+		name: 'Thành viên',
+		icon: 'TeamOutlined',
+		component: './CLB/Members',
+	},
+	{
+		path: '/clb-reports',
+		name: 'Báo cáo',
+		icon: 'BarChartOutlined',
+		component: './CLB/Reports',
+	},
 
 	// DANH MUC HE THONG
 	// {

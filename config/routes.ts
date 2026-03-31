@@ -46,7 +46,7 @@
 	{
 		path: '/quan-ly-van-bang',
 		name: 'Quản lý văn bằng',
-		icon: 'BookOutlined', // Cần import icon tương ứng nếu file routes yêu cầu
+		icon: 'BookOutlined',
 		routes: [
 			{
 				path: '/quan-ly-van-bang/so-van-bang',

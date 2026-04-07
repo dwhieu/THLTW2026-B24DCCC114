@@ -29,7 +29,7 @@ const TodoList: React.FC = () => {
 				{data?.map((item, index) => {
 					return (
 						<Col md={8} xxl={6} key={index}>
-							<TodoItem record={item} index={index} />
+							<TodoItem record={item} />
 						</Col>
 					);
 				})}

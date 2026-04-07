@@ -65,7 +65,10 @@ export default () => {
 		}
 	};
 
-	const updateSettingBaseModel = async (payload: { key: ESettingKey; value: any; noNotif?: boolean }, ip?: string) => {
+	const updateSettingBaseModel = async (
+		payload: { key: ESettingKey; value: any; noNotif?: boolean },
+		ip?: string,
+	): Promise<{ success: true }> => {
 		if (formSubmiting) return Promise.reject('Form submiting');
 		setFormSubmiting(true);
 		try {
@@ -80,6 +83,7 @@ export default () => {
 				return set;
 			});
 			if (!payload?.noNotif) message.success('Lưu thành công');
+			return { success: true };
 		} catch (err) {
 			return Promise.reject(err);
 		} finally {

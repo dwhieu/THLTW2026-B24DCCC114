@@ -25,6 +25,36 @@
 		icon: 'HomeOutlined',
 	},
 	{
+		name: 'Du Lịch',
+		path: '/travel',
+		routes: [
+			{
+				name: 'Khám Phá',
+				path: '/travel/explore',
+				component: './Travel/Explore',
+			},
+			{
+				name: 'Lịch Trình',
+				path: '/travel/itinerary',
+				component: './Travel/Itinerary',
+			},
+			{
+				name: 'Ngân Sách',
+				path: '/travel/budget',
+				component: './Travel/Budget',
+			},
+			{
+				name: 'Admin',
+				path: '/travel/admin',
+				component: './Travel/Admin',
+			},
+			{
+				path: '/travel',
+				redirect: '/travel/explore',
+			},
+		],
+	},
+	{
 		path: '/gioi-thieu',
 		name: 'About',
 		component: './TienIch/GioiThieu',

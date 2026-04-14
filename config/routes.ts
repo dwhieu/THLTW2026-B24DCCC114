@@ -1,4 +1,4 @@
-﻿export default [
+export default [
 	{
 		path: '/user',
 		layout: false,
@@ -41,6 +41,23 @@
 		name: 'TodoList',
 		icon: 'OrderedListOutlined',
 		component: './TodoList',
+	},
+	{
+		path: '/quan-ly-khoa-hoc',
+		name: 'Quản lý khóa học',
+		icon: 'BookOutlined',
+		routes: [
+			{
+				path: '/quan-ly-khoa-hoc/danh-sach',
+				name: 'Danh sách khóa học',
+				component: './QuanLyKhoaHoc',
+			},
+			{
+				path: '/quan-ly-khoa-hoc/them-moi',
+				name: 'Thêm mới khóa học',
+				component: './QuanLyKhoaHoc',
+			},
+		],
 	},
 
 	// DANH MUC HE THONG

@@ -28,13 +28,14 @@ const CourseList: React.FC<CourseListProps> = ({ courses, onDelete, onUpdate }) 
   });
 
   const columns = [
-    { title: 'ID', dataIndex: 'id', key: 'id', width: 80 },
-    { title: 'Tên khóa học', dataIndex: 'name', key: 'name' },
-    { title: 'Giảng viên', dataIndex: 'lecturer', key: 'lecturer' },
+    { title: 'ID', dataIndex: 'id', key: 'id', width: 80, align: 'center' as const },
+    { title: 'Tên khóa học', dataIndex: 'name', key: 'name', align: 'center' as const },
+    { title: 'Giảng viên', dataIndex: 'lecturer', key: 'lecturer', align: 'center' as const },
     { 
       title: 'Học viên', 
       dataIndex: 'students', 
       key: 'students', 
+      align: 'center' as const,
       sorter: (a: Course, b: Course) => a.students - b.students,
       render: (count: number) => <b>{count}</b>
     },
@@ -42,6 +43,7 @@ const CourseList: React.FC<CourseListProps> = ({ courses, onDelete, onUpdate }) 
       title: 'Trạng thái',
       dataIndex: 'status',
       key: 'status',
+      align: 'center' as const,
       render: (status: string) => {
         let color = 'blue';
         if (status === 'Ended') color = 'red';
@@ -57,6 +59,7 @@ const CourseList: React.FC<CourseListProps> = ({ courses, onDelete, onUpdate }) 
     {
       title: 'Thao tác',
       key: 'action',
+      align: 'center' as const,
       render: (_: any, record: Course) => (
         <Space size="middle">
           <Button 

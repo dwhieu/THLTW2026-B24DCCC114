@@ -1,4 +1,4 @@
-﻿export default [
+export default [
 	{
 		path: '/user',
 		layout: false,
@@ -41,6 +41,45 @@
 		name: 'TodoList',
 		icon: 'OrderedListOutlined',
 		component: './TodoList',
+	},
+
+	// BLOG ROUTES
+	{
+		path: '/blog',
+		name: 'Blog',
+		icon: 'BookOutlined',
+		routes: [
+			{
+				path: '/blog/home',
+				name: 'Trang chủ',
+				component: './Blog/Home',
+				icon: 'HomeOutlined',
+			},
+			{
+				path: '/blog/detail',
+				name: 'Chi tiết bài viết',
+				component: './Blog/Detail',
+				icon: 'FileTextOutlined',
+			},
+			{
+				path: '/blog/about',
+				name: 'Giới thiệu',
+				component: './Blog/About',
+				icon: 'UserOutlined',
+			},
+			{
+				path: '/blog/post-manage',
+				name: 'Quản lý bài viết',
+				component: './Blog/Management/PostManage',
+				icon: 'SettingOutlined',
+			},
+			{
+				path: '/blog/tag-manage',
+				name: 'Quản lý thẻ',
+				component: './Blog/Management/TagManage',
+				icon: 'TagsOutlined',
+			},
+		],
 	},
 
 	// DANH MUC HE THONG

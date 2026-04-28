@@ -11,8 +11,8 @@ interface Workout {
   id: string;
   date: string;
   type: string;
-  name: string; // Tên bài tập
-  duration: number; // phút
+  name: string;
+  duration: number;
   calories: number;
   notes: string;
   status: 'Hoàn thành' | 'Bỏ lỡ';
@@ -49,7 +49,7 @@ const WorkoutDiary: React.FC = () => {
   const [editingWorkout, setEditingWorkout] = useState<Workout | null>(null);
   const [form] = Form.useForm();
 
-  // Filters
+
   const [searchText, setSearchText] = useState('');
   const [filterType, setFilterType] = useState<string | undefined>(undefined);
   const [dateRange, setDateRange] = useState<[moment.Moment, moment.Moment] | null>(null);
@@ -117,7 +117,7 @@ const WorkoutDiary: React.FC = () => {
     });
   };
 
-  // Lọc dữ liệu
+
   const filteredWorkouts = workouts.filter(w => {
     const matchName = w.name.toLowerCase().includes(searchText.toLowerCase());
     const matchType = filterType ? w.type === filterType : true;

@@ -21,25 +21,25 @@ const Dashboard: React.FC = () => {
     setGoals(g);
   }, []);
 
-  // Tính toán các chỉ số nhanh
+
   const thisMonth = moment().startOf('month');
   const workoutsThisMonth = workouts.filter(w => moment(w.date).isSameOrAfter(thisMonth) && w.status === 'Hoàn thành');
   
   const totalWorkouts = workoutsThisMonth.length;
   const totalCalories = workoutsThisMonth.reduce((sum, w) => sum + (Number(w.calories) || 0), 0);
   
-  // Tính streak (số ngày tập liên tiếp)
+
   let streak = 0;
   const completedDates = Array.from(new Set(workouts
     .filter(w => w.status === 'Hoàn thành')
     .map(w => moment(w.date).startOf('day').format('YYYY-MM-DD'))
-  )).sort((a, b) => moment(b).valueOf() - moment(a).valueOf()); // descending
+  )).sort((a, b) => moment(b).valueOf() - moment(a).valueOf());
 
   if (completedDates.length > 0) {
     let today = moment().startOf('day');
     let lastWorkoutDay = moment(completedDates[0]);
     
-    // Nếu hôm nay hoặc hôm qua có tập thì mới tính tiếp
+
     if (today.diff(lastWorkoutDay, 'days') <= 1) {
       streak = 1;
       let checkDate = lastWorkoutDay.clone().subtract(1, 'days');
@@ -54,12 +54,12 @@ const Dashboard: React.FC = () => {
     }
   }
 
-  // Mục tiêu hoàn thành (%)
+
   const completedGoals = goals.filter(g => g.status === 'Đã đạt').length;
   const goalCompletionPercent = goals.length > 0 ? Math.round((completedGoals / goals.length) * 100) : 0;
 
-  // Dữ liệu cho biểu đồ cột (Số buổi tập theo từng tuần trong tháng)
-  const weeksInMonth = [0, 0, 0, 0, 0]; // Giả sử tối đa 5 tuần
+
+  const weeksInMonth = [0, 0, 0, 0, 0];
   workoutsThisMonth.forEach(w => {
     const week = moment(w.date).week() - moment().startOf('month').week();
     if (week >= 0 && week < 5) {
@@ -75,7 +75,7 @@ const Dashboard: React.FC = () => {
   };
   const columnChartSeries = [{ name: 'Buổi tập', data: weeksInMonth }];
 
-  // Dữ liệu cho biểu đồ đường (Sự thay đổi cân nặng)
+
   const sortedMetrics = [...metrics].sort((a, b) => moment(a.date).valueOf() - moment(b.date).valueOf());
   const weightDates = sortedMetrics.map(m => moment(m.date).format('DD/MM'));
   const weights = sortedMetrics.map(m => m.weight);
@@ -90,7 +90,7 @@ const Dashboard: React.FC = () => {
   };
   const lineChartSeries = [{ name: 'Cân nặng', data: weights }];
 
-  // 5 buổi tập gần nhất
+
   const recentWorkouts = [...workouts]
     .sort((a, b) => moment(b.date).valueOf() - moment(a.date).valueOf())
     .slice(0, 5);
@@ -99,7 +99,7 @@ const Dashboard: React.FC = () => {
     <div style={{ padding: 24, background: '#f0f2f5', minHeight: '100vh' }}>
       <Title level={2} style={{ marginBottom: 24 }}>Tổng quan cá nhân</Title>
       
-      {/* 4 Thẻ chỉ số nhanh */}
+
       <Row gutter={[16, 16]} style={{ marginBottom: 24 }}>
         <Col xs={24} sm={12} lg={6}>
           <Card bordered={false} hoverable>
@@ -144,14 +144,14 @@ const Dashboard: React.FC = () => {
       </Row>
 
       <Row gutter={[16, 16]}>
-        {/* Biểu đồ cột */}
+
         <Col xs={24} lg={12}>
           <Card bordered={false} style={{ height: '100%' }}>
             <ReactApexChart options={columnChartOptions} series={columnChartSeries} type="bar" height={350} />
           </Card>
         </Col>
         
-        {/* Biểu đồ đường */}
+
         <Col xs={24} lg={12}>
           <Card bordered={false} style={{ height: '100%' }}>
             {weights.length > 0 ? (

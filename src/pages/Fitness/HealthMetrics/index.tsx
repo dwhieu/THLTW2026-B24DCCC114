@@ -6,10 +6,10 @@ import moment from 'moment';
 interface HealthMetric {
   id: string;
   date: string;
-  weight: number; // kg
-  height: number; // cm
+  weight: number;
+  height: number;
   bmi?: number;
-  restingHeartRate: number; // bpm
+  restingHeartRate: number;
   sleepHours: number;
 }
 
@@ -51,7 +51,7 @@ const HealthMetrics: React.FC = () => {
   }, []);
 
   const saveMetrics = (newMetrics: HealthMetric[]) => {
-    // Sort by date descending
+
     newMetrics.sort((a, b) => moment(b.date).valueOf() - moment(a.date).valueOf());
     setMetrics(newMetrics);
     localStorage.setItem('fitness_health_metrics', JSON.stringify(newMetrics));
@@ -74,7 +74,7 @@ const HealthMetrics: React.FC = () => {
   const handleAdd = () => {
     setEditingMetric(null);
     form.resetFields();
-    // Default values
+
     if (metrics.length > 0) {
       const latest = metrics[0];
       form.setFieldsValue({

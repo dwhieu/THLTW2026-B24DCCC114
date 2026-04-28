@@ -206,7 +206,7 @@ const ExerciseLibrary: React.FC = () => {
         )}
       </Row>
 
-      {/* Modal Thêm/Sửa bài tập */}
+
       <Modal
         title={editingExercise ? 'Sửa bài tập' : 'Thêm bài tập mới'}
         visible={isModalVisible}
@@ -245,7 +245,7 @@ const ExerciseLibrary: React.FC = () => {
         </Form>
       </Modal>
 
-      {/* Modal Chi tiết bài tập */}
+
       <Modal
         title={viewingExercise?.name}
         visible={isDetailModalVisible}

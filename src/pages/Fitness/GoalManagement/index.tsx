@@ -11,7 +11,7 @@ interface Goal {
   type: string;
   targetValue: number;
   currentValue: number;
-  deadline: string; // ISO string
+  deadline: string;
   status: 'Đang thực hiện' | 'Đã đạt' | 'Đã hủy';
 }
 
@@ -23,8 +23,8 @@ const defaultGoals: Goal[] = [
     id: '1',
     name: 'Giảm 5kg trong 2 tháng',
     type: 'Giảm cân',
-    targetValue: 70, // Ví dụ: Cân nặng mục tiêu
-    currentValue: 73, // Cân nặng hiện tại
+    targetValue: 70,
+    currentValue: 73,
     deadline: moment().add(2, 'months').toISOString(),
     status: 'Đang thực hiện',
   },
@@ -100,9 +100,7 @@ const GoalManagement: React.FC = () => {
     const newGoals = goals.map((g) => {
       if (g.id === id) {
         let newStatus = g.status;
-        // Giả sử nếu cập nhật đạt target thì tự động chuyển sang đã đạt
-        // Tuy nhiên logic đạt target phụ thuộc vào loại (vd giảm cân thì current <= target)
-        // Ở đây để đơn giản, chỉ cập nhật giá trị.
+
         return { ...g, currentValue: numValue };
       }
       return g;
@@ -127,16 +125,11 @@ const GoalManagement: React.FC = () => {
     }
   };
 
-  // Hàm tính % hoàn thành. Cần cẩn thận vì có mục tiêu giảm (từ 75 xuống 70) và mục tiêu tăng.
-  // Để đơn giản hóa trong UI, mình tính tỷ lệ giữa current và target nếu là mục tiêu tăng,
-  // Nếu mục tiêu giảm thì cần biết giá trị ban đầu. 
-  // Ở đây chúng ta hiển thị Progress dựa trên % tương đối đơn giản, hoặc người dùng tự nhập % nếu phức tạp.
-  // Tạm thời tính: progress = (current / target) * 100 nếu target > 0
+
   const calculateProgress = (current: number, target: number) => {
     if (target === 0) return 0;
     let percent = (current / target) * 100;
-    // Nếu target < current (ví dụ giảm cân), logic sẽ khác, tạm bỏ qua xử lý phức tạp 
-    // và chỉ tính % nếu current <= target cho mục tiêu tăng.
+
     if (percent > 100) percent = 100;
     if (percent < 0) percent = 0;
     return Math.round(percent);

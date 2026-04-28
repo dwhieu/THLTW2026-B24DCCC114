@@ -1,4 +1,4 @@
-﻿export default [
+export default [
 	{
 		path: '/user',
 		layout: false,
@@ -42,6 +42,41 @@
 		icon: 'OrderedListOutlined',
 		component: './TodoList',
 	},
+
+	// SỨC KHỎE & THỂ DỤC
+	{
+		name: 'Thể dục & Sức khỏe',
+		path: '/fitness',
+		icon: 'HeartOutlined',
+		routes: [
+			{
+				path: '/fitness/dashboard',
+				name: 'Trang chủ',
+				component: './Fitness/Dashboard',
+			},
+			{
+				path: '/fitness/workout-diary',
+				name: 'Nhật ký tập luyện',
+				component: './Fitness/WorkoutDiary',
+			},
+			{
+				path: '/fitness/health-metrics',
+				name: 'Nhật ký chỉ số',
+				component: './Fitness/HealthMetrics',
+			},
+			{
+				path: '/fitness/goal-management',
+				name: 'Quản lý mục tiêu',
+				component: './Fitness/GoalManagement',
+			},
+			{
+				path: '/fitness/exercise-library',
+				name: 'Thư viện bài tập',
+				component: './Fitness/ExerciseLibrary',
+			},
+		],
+	},
+
 
 	// DANH MUC HE THONG
 	// {
